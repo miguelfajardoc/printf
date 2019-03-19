@@ -11,6 +11,6 @@
  */
 int main ()
 {
-	_printf("%s%d%c");
+	_printf("aa%s%d%s");
 	return (0);
 }
