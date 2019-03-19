@@ -6,7 +6,7 @@
  * paste - paste the args and format
  *
  */
-void paste(char* str_ptr, postipos position, const char * format, int numf,
+void paste(char *str_ptr, postipos *position, const char * format, int numf,
 	   va_list vlist, va_list vlist2)
 {
 	int s, i, j = 0;
@@ -44,5 +44,5 @@ void paste(char* str_ptr, postipos position, const char * format, int numf,
 			s++;
 		}
 	}
-	str_prt[s] = '\0';
+	str_ptr[s] = '\0';
 }

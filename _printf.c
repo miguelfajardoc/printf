@@ -24,27 +24,28 @@ int _printf(const char *format, ...)
 	va_list vlist;
 	va_list vlist2;
 	int iter, flg = 0;
-	char *str_prt;
+	char *str_prt, *strret;
+	int i = 0;
 
 	va_start(vlist, format);
 	sizef = _strlen(format);
 	num_f = count(format);
 	position = malloc (sizeof(postipos) * num_f);
-	va_copy(vlist2, vlist1);
+	va_copy(vlist2, vlist);
 	look(format, position);
 	for (i = 0; i< num_f; i++)
 	{
 		size_args +=  position[i].f(flg, vlist, vlist2, strret);
 	}
 	str_prt = malloc(sizeof(char) * (sizef + size_args - (2 * num_f)));
-	paste(str_prt, position, format, num_f);
+	paste(str_prt, position, format, num_f, vlist, vlist2);
 	printf("%s", str_prt);
 	free(position);
-	free(str_ptr);
+	free(str_prt);
 	va_end(vlist);
 	va_end(vlist2);
 }
-void fund(int f, va_list vlist, va_list vlist2, char* s)
+int fund(int f, va_list vlist, va_list vlist2, char* s)
 {
 	printf("%d%d", f, va_arg(vlist, int));
 	s = va_arg(vlist2, char*);

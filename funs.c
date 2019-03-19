@@ -8,7 +8,7 @@ int funs(int f, va_list vlist, va_list vlist2,char *s)
 
 	if (f == 0)
 	{
-		i = _strenlen(va_arg(vlist, char *));
+		i = _strlen(va_arg(vlist, char *));
 		return(i);
 	}
 	else 
