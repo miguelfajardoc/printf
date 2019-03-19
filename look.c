@@ -27,8 +27,8 @@ int look(const char *format, postipos *position)
 				if (format[i+1] == tf[j].tipo)
 				{
 					position[k].tip = tf[j].tipo;
-					position[0].pos = i;
-					position[0].f = tf[j].s;
+					position[k].pos = i;
+					position[k].f = tf[j].s;
 					count++;
 					k++;
 				}
