@@ -5,35 +5,36 @@
 /**
  */
 
-int look (const char *format, postipos *position)
+int look(const char *format, postipos *position)
 {
 	int i;
 	int j;
+	int k = 0;
 	int count = 0;
- 
-	tiposf tf[] = { 
+
+	tiposf tf[] = {
 		{'c', func},
 		{'s', funs},
 		{'d', fund},
-	}
+	};
 
 	for(i = 0; format[i]; i++)
 	{
-		if (format[i] == "%")
+		if (format[i] == '%')
 		{
 			for (j = 0; j < 3; j++)
 			{
-				if (format[i++] == tf[j].tipo)
+				if (format[i+1] == tf[j].tipo)
 				{
-					position[j].tip = tf[j].tipo;
-					position[k].pos = i;
-					position[k].f = tf[j].f;
+					position[k].tip = tf[j].tipo;
+					position[0].pos = i;
+					position[0].f = tf[j].s;
 					count++;
+					k++;
 				}
 			}
 		}
 	}
 
-	position[0].tip = format[0];
 	return (count);
 }
