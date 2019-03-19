@@ -6,7 +6,7 @@
  *
  */
 
-int func(int f, va_list vlist, va_list vlist2, array charr)
+int func(int f, va_list vlist, va_list vlist2, char *s)
 {
 	if (f == 0)
 	{

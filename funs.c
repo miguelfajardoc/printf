@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-int funs(int f, va_list vlist, va_list vlist2, *s)
+int funs(int f, va_list vlist, va_list vlist2,char *s)
 {
 	int i = 0;
 
