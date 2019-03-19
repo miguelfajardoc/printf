@@ -12,9 +12,9 @@ int look (const char *format, postipos *position)
 	int count = 0;
  
 	tiposf tf[] = { 
-		c, func,
-		s, funs,
-		d, fund,
+		{'c', func},
+		{'s', funs},
+		{'d', fund},
 	}
 
 	for(i = 0; format[i]; i++)
