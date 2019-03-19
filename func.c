@@ -6,17 +6,17 @@
  *
  */
 
-int func(int f, va_list vlist, va_list vlist2, char *s)
+int func(int f, va_list vlist, va_list vlist2, char *charr)
 {
 	if (f == 0)
 	{
-		va_arg (vlist, char);
-		return(1)
+		va_arg (vlist, int);
+		return(1);
 	}
 	else 
 	{
 		charr[0] = va_arg(vlist2, int);
-		charr[1] = '\0'
-		return(0)
+		charr[1] = '\0';
+		return(0);
 	}
 }
