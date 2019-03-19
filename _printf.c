@@ -13,6 +13,8 @@
  * type and function of the %args thar is introduced
  * iter = a symple iterator to call the functions
  * str_ptr = the pointer that allocates the string with the args to be printed
+ * flg = the flag to functions
+ * strret = pointer that return the content of va_args
  * Return: the lenght of the output
  */
 int _printf(const char *format, ...)
@@ -20,43 +22,30 @@ int _printf(const char *format, ...)
 	int sizef, num_f, size_args = 0;
 	postipos *position;
 	va_list vlist;
-	int iter;
+	va_list vlist2;
+	int iter, flg = 0;
 	char *str_prt;
 
+	va_start(vlist, format);
 	sizef = _strlen(format);
 	num_f = count(format);
 	position = malloc (sizeof(postipos) * num_f);
-
+	va_copy(vlist2, vlist1);
 	look(format, position);
 	for (i = 0; i< num_f; i++)
 	{
-		size_args += position[i].f(vlist);
+		size_args +=  position[i].f(flg, vlist, vlist2, strret);
 	}
 	str_prt = malloc(sizeof(char) * (sizef + size_args - (2 * num_f)));
-	/*printf("%c", position[0].tip);
-	printf("%c", position[1].tip);
-	printf("%c", position[2].tip);*/
-/*
-	sizef = _strlen(format);
-	num_c = look(format);
-
-	if (num_c == 0)
-		_putchar(format, sizef);
-	else if (num_c > 0)
-	{
-		va_start(list, format);
-		str_ptr = malloc(sizef - num_c);*/
-	
+	paste(str_prt, position, format, num_f);
+	printf("%s", str_prt);
+	free(position);
+	free(str_ptr);
+	va_end(vlist);
+	va_end(vlist2);
 }
-void func(va_list vlist)
+void fund(int f, va_list vlist, va_list vlist2, char* s)
 {
-	printf("%d", va_arg(vlist, int));
-}
-void funs(va_list vlist)
-{
-	printf("%d", va_arg(vlist, int));
-}
-void fund(va_list vlist)
-{
-	printf("%d", va_arg(vlist, int));
+	printf("%d%d", f, va_arg(vlist, int));
+	s = va_arg(vlist2, char*);
 }
