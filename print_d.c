@@ -7,6 +7,7 @@
  *@f: the flag
  *@vlist: list
  *@vlist2: copy list
+ *@s: string
  *Return: count
  */
 char *print_d(int f, va_list vlist, va_list vlist2, char *s)

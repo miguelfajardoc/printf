@@ -6,7 +6,8 @@
  *convertd - convert a int to a string
  *
  *@num: number to convert
- *Return: 0
+ *@s: string;
+ * Return: 0
  */
 char *convertd(int num, char *s)
 {
