@@ -28,14 +28,18 @@ int _printf(const char *format, ...)
 	char *str_prt, *strret = NULL;
 	int sizet;
 
+	if (format == NULL)
+		exit(-1);
 	va_start(vlist, format);
 	sizef = _strlen(format);
+	if (sizef == 1 && format[0] == '%')
+		exit(-1);
 	num_f = count(format);
 	position = malloc(sizeof(postipos) * num_f);
 	if (position == NULL)
 	{
-		printf("malloc error");
-		return (1);
+		free(position);
+		exit (-1);
 	}
 	va_copy(vlist2, vlist);
 	look(format, position);
@@ -43,12 +47,12 @@ int _printf(const char *format, ...)
 	{
 		size_args +=  position[i].f(flg, vlist, vlist2, strret);
 	}
-	sizet = sizef + size_args - (2 * num_f) + 1;
+	sizet = sizef + size_args - (2 * num_f);
 	str_prt = malloc(sizeof(char) * sizet);
-	if (position == NULL)
+	if (str_prt == NULL)
 	{
-		printf("malloc error");
-		return (1);
+		free(str_prt);
+		exit (-1);
 	}
 	paste(str_prt, position, format, num_f, vlist, vlist2);
 	put_string(str_prt, sizet);
