@@ -15,8 +15,7 @@
 void paste(char *str_ptr, postipos *position, const char *format, int numf,
 	   va_list vlist, va_list vlist2)
 {
-	int s = 0, i = 0, j = 0;
-	int flg = 1;
+	int s = 0, i = 0, j = 0, flg = 1;
 	char charr[2];
 	char *strret;
 	int length;
@@ -36,7 +35,11 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 				}
 				else
 				{
-					strret = funss(strret, vlist2);
+					if (position[j].tip == 's')
+						strret = funss(strret, vlist2);
+					else
+						strret = print_d(flg, vlist,
+								 vlist2, strret);
 					_strcpy((str_ptr + s), strret);
 					length = _strlen(strret);
 					s = s + length - 1;
@@ -46,12 +49,10 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 			}
 			else
 				str_ptr[s] = format[i];
-			i++;
-			s++;
+			i++, s++;
 		}
 		str_ptr[s] = format[i];
-		i++;
-		s++;
+		i++, s++;
 	}
 	str_ptr[s] = '\0';
 }
