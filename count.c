@@ -14,12 +14,11 @@ int count(const char *format)
 	tiposf tipos[] = {
 		{ 'c', func},
 		{ 'd', fund},
-		{ 's', funs},
-		{ 'i', fund}
+		{ 's', funs}
 	};
 	for (i = 0; format[i]; i++)
 	{
-		for (j = 0; j < 4; j++)
+		for (j = 0; j < 3; j++)
 		{
 			if (format[i] == '%' && format[i + 1] == tipos[j].tipo)
 				count++;
