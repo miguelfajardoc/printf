@@ -3,6 +3,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 /**
+ *look - look for all %
+ *
+ *@format: is the format that pass
+ *@position: pointer to the structure
+ *Return: count
  */
 
 int look(const char *format, postipos *position)
@@ -18,13 +23,13 @@ int look(const char *format, postipos *position)
 		{'d', fund},
 	};
 
-	for(i = 0; format[i]; i++)
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
 			for (j = 0; j < 3; j++)
 			{
-				if (format[i+1] == tf[j].tipo)
+				if (format[i + 1] == tf[j].tipo)
 				{
 					position[k].tip = tf[j].tipo;
 					position[k].pos = i;
