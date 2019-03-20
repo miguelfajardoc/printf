@@ -30,16 +30,16 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		exit(-1);
-	va_start(vlist, format);
 	sizef = _strlen(format);
 	if (sizef == 1 && format[0] == '%')
 		exit(-1);
+	va_start(vlist, format);
 	num_f = count(format);
 	position = malloc(sizeof(postipos) * num_f);
 	if (position == NULL)
 	{
 		free(position);
-		exit (-1);
+		exit(-1);
 	}
 	va_copy(vlist2, vlist);
 	look(format, position);
@@ -52,7 +52,7 @@ int _printf(const char *format, ...)
 	if (str_prt == NULL)
 	{
 		free(str_prt);
-		exit (-1);
+		exit(-1);
 	}
 	paste(str_prt, position, format, num_f, vlist, vlist2);
 	put_string(str_prt, sizet);
