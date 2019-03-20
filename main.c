@@ -11,6 +11,6 @@
  */
 int main ()
 {
-	_printf("a%c\n", 'c');
+	_printf("muy %c%s :)\n", 'c', "ool");
 	return (0);
 }

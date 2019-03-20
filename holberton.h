@@ -5,6 +5,7 @@ void put_string(char *str, int sizet);
 int func(int f, va_list vlist, va_list vlist2, char *s);
 int funs(int f, va_list vlist, va_list vlist2, char *s);
 int fund(int f, va_list vlist, va_list vlist2, char *s);
+char *funss(char *strr, va_list vlist2);
 char *_strcpy(char *dest, char *src);
 int _strlen(const char *s);
 /**
