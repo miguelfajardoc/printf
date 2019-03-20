@@ -9,21 +9,20 @@
  *@vlist2: copy list
  *Return: count
  */
-char *print_d(int f, va_list vlist, va_list vlist2)
+char *print_d(int f, va_list vlist, va_list vlist2, char *s)
 {
 	int output;
-	char *count;
 
 	if (f == 0)
 	{	output = va_arg(vlist, int);
-		count = convertd(output);
-		return (count);
+		s = convertd(output, s);
+		return (s);
 	}
 	else
 	{
 		output = va_arg(vlist2, int);
-		count = convertd(output);
-		return (count);
+		s = convertd(output, s);
+		return (s);
 	}
-	return (count);
+	return (s);
 }

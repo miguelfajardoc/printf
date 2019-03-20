@@ -74,7 +74,7 @@ int fund(int f, va_list vlist, va_list vlist2, char *s)
 
 	if (f == 0)
 	{
-		s = print_d(f, vlist, vlist2);
+		s = print_d(f, vlist, vlist2, s);
 		i = _strlen(s);
 		return (i);
 	}

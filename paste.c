@@ -39,7 +39,7 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 						strret = funss(strret, vlist2);
 					else
 						strret = print_d(flg, vlist,
-								 vlist2);
+								 vlist2, strret);
 					_strcpy((str_ptr + s), strret);
 					length = _strlen(strret);
 					s = s + length - 1;
