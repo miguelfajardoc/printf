@@ -68,9 +68,18 @@ int _printf(const char *format, ...)
  * @s: the string
  * Return: the length
  */
-int fund(int f, va_list vlist, va_list vlist2, __attribute__((unused)) char *s)
+int fund(int f, va_list vlist, va_list vlist2, char *s)
 {
-	printf("%d%d", f, va_arg(vlist, int));
-	s = va_arg(vlist2, char *);
-	return (0);
+	int i = 0;
+
+	if (f == 0)
+	{
+		s = print_d(f, vlist, vlist2, s);
+		i = _strlen(s);
+		return (i);
+	}
+	else
+	{
+		return (i);
+	}
 }

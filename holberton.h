@@ -8,6 +8,8 @@ int fund(int f, va_list vlist, va_list vlist2, char *s);
 char *funss(char *strr, va_list vlist2);
 char *_strcpy(char *dest, char *src);
 int _strlen(const char *s);
+char *convertd(int num, char *s);
+char *print_d(int f, va_list vlist, va_list vlist2, char *s);
 /**
  * struct typs - the structure of type, position and function asociate
  * @tip: tipo
