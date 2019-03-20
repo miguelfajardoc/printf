@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "holberton.h"
 #include <stdlib.h>
+#include <unistd.h>
 /**
  * _printf - like a printf
  * @format: the format to print
@@ -19,55 +20,57 @@
  */
 int _printf(const char *format, ...)
 {
-	int sizef, num_f, size_args = 0;
+	int sizef, num_f, size_args = 0, i = 0;
 	postipos *position;
-	va_list vlist;
-	va_list vlist2;
+	va_list vlist, vlist2;
 	int flg = 0;
-	char *str_prt, *strret;
-	int i = 0;
+	char *str_prt, *strret = NULL;
 	int sizet;
 
-	va_start(vlist, format);
+	if (format == NULL)
+		return (-1);
 	sizef = _strlen(format);
+	if (sizef == 1 && format[0] == '%')
+		return (-1);
+	va_start(vlist, format);
 	num_f = count(format);
-	position = malloc (sizeof(postipos) * num_f);
-
-	printf("%p\n", position);
+	position = malloc(sizeof(postipos) * num_f);
 	if (position == NULL)
 	{
-		printf("malloc error");
-		return (1);
+		free(position);
+		return (-1);
 	}
 	va_copy(vlist2, vlist);
 	look(format, position);
-	printf("position[%d].tip:%c\n", 0, position[0].tip);
-	printf("position[%d].pos:%d\n", 0, position[0].pos);
-	for (i = 0; i< num_f; i++)
+	for (i = 0; i < num_f; i++)
 	{
 		size_args +=  position[i].f(flg, vlist, vlist2, strret);
 	}
-	printf("size_args:%d\n", size_args);
-	sizet = sizef + size_args - (2 * num_f) + 1;
-	printf("sizet:%d\n", sizet);
+	sizet = sizef + size_args - (2 * num_f);
 	str_prt = malloc(sizeof(char) * sizet);
-	if (position == NULL)
+	if (str_prt == NULL)
 	{
-		printf("malloc error");
-		return (1);
+		free(position), free(str_prt);
+		return (-1);
 	}
 	paste(str_prt, position, format, num_f, vlist, vlist2);
-	printf("%s", str_prt);
+	put_string(str_prt, sizet);
 	free(position);
 	free(str_prt);
 	va_end(vlist);
-	va_end(vlist2);
 	return (sizet);
-
 }
-int fund(int f, va_list vlist, va_list vlist2, char* s)
+/**
+ * fund - the int
+ * @f: the format to print
+ * @vlist: the list
+ * @vlist2: the copy of the list
+ * @s: the string
+ * Return: the length
+ */
+int fund(int f, va_list vlist, va_list vlist2, __attribute__((unused)) char *s)
 {
 	printf("%d%d", f, va_arg(vlist, int));
-	s = va_arg(vlist2, char*);
+	s = va_arg(vlist2, char *);
 	return (0);
 }
