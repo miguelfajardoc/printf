@@ -18,7 +18,7 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 	int s = 0, i = 0, j = 0;
 	int flg = 1;
 	char charr[2];
-	char strret[10];
+	char *strret;
 	int length;
 
 	while (*(format + i))
@@ -36,9 +36,9 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 				}
 				else
 				{
-					length = position[j].f(flg, vlist, vlist2,
-							       strret);
-					_strcpy(&str_ptr[s], strret);
+					strret = funss(strret, vlist2);
+					_strcpy((str_ptr + s), strret);
+					length = _strlen(strret);
 					s = s + length - 1;
 					j++;
 					i++;
