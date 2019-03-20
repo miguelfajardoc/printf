@@ -22,6 +22,7 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 
 	while (*(format + i))
 	{
+		printf("j:%d\n", j);
 		while (j < numf)
 		{
 			if (i == position[j].pos)
