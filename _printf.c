@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "holberton.h"
 #include <stdlib.h>
+#include <unistd.h>
 /**
  * _printf - like a printf
  * @format: the format to print
@@ -24,14 +25,13 @@ int _printf(const char *format, ...)
 	va_list vlist;
 	va_list vlist2;
 	int flg = 0;
-	char *str_prt, *strret;
+	char *str_prt, *strret = NULL;
 	int sizet;
 
 	va_start(vlist, format);
 	sizef = _strlen(format);
 	num_f = count(format);
 	position = malloc(sizeof(postipos) * num_f);
-	printf("%p\n", position);
 	if (position == NULL)
 	{
 		printf("malloc error");
@@ -65,9 +65,10 @@ int _printf(const char *format, ...)
  * @s: the string
  * Return: the length
  */
-int fund(int f, va_list vlist, va_list vlist2, char *s)
+int fund(int f, va_list vlist, va_list vlist2, __attribute__((unused)) char *s)
 {
 	printf("%d%d", f, va_arg(vlist, int));
 	s = va_arg(vlist2, char *);
+	
 	return (0);
 }
