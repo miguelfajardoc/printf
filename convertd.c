@@ -8,10 +8,10 @@
  *@num: number to convert
  *Return: 0
  */
-int convertd(int num)
+char *convertd(int num)
 {
 	int i, rem, len = 0, n;
-	char str[10];
+	char *str[10];
 
 	n = num;
 	while (n != 0)
@@ -27,5 +27,5 @@ int convertd(int num)
 	}
 	str[len] = '\0';
 	printf("%s", str);
-	return (0);
+	return (str);
 }
