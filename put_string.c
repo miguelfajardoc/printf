@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "holberton.h"
 #include <stdlib.h>
+#include <unistd.h>
 /**
  * put_string - print all
  * @str: the string to print
