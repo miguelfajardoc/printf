@@ -11,14 +11,17 @@
  *@s: pointer leng
  *Return: i
  */
-int funs(int f, va_list vlist, __attribute__((unused)) va_list vlist2,
-	 __attribute__((unused))char *s)
+int funs(int f, va_list vlist, __attribute__((unused)) va_list vlist2, char *s)
 {
 	int i = 0;
 
 	if (f == 0)
 	{
-		i = _strlen(va_arg(vlist, char *));
+		s = va_arg(vlist, char *);
+		if (s == NULL)
+			s = "(null)";
+
+		i = _strlen(s);
 		return (i);
 	}
 	else
@@ -27,7 +30,7 @@ int funs(int f, va_list vlist, __attribute__((unused)) va_list vlist2,
 	}
 }
 /**
- *funs - the function for strings
+ *funss - the function for strings
  *
  *@vlist2: the copy
  *@strr: pointer leng
@@ -36,5 +39,7 @@ int funs(int f, va_list vlist, __attribute__((unused)) va_list vlist2,
 char *funss(char *strr, va_list vlist2)
 {
 	strr = va_arg(vlist2, char *);
+	if (strr == NULL)
+		strr = "(null)";
 	return (strr);
 }

@@ -22,24 +22,23 @@ int _printf(const char *format, ...)
 {
 	int sizef, num_f, size_args = 0, i = 0;
 	postipos *position;
-	va_list vlist;
-	va_list vlist2;
+	va_list vlist, vlist2;
 	int flg = 0;
 	char *str_prt, *strret = NULL;
 	int sizet;
 
 	if (format == NULL)
-		exit(-1);
+		return (-1);
 	sizef = _strlen(format);
 	if (sizef == 1 && format[0] == '%')
-		exit(-1);
+		return (-1);
 	va_start(vlist, format);
 	num_f = count(format);
 	position = malloc(sizeof(postipos) * num_f);
 	if (position == NULL)
 	{
 		free(position);
-		exit(-1);
+		return (-1);
 	}
 	va_copy(vlist2, vlist);
 	look(format, position);
@@ -51,8 +50,8 @@ int _printf(const char *format, ...)
 	str_prt = malloc(sizeof(char) * sizet);
 	if (str_prt == NULL)
 	{
-		free(str_prt);
-		exit(-1);
+		free(position), free(str_prt);
+		return (-1);
 	}
 	paste(str_prt, position, format, num_f, vlist, vlist2);
 	put_string(str_prt, sizet);
