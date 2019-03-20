@@ -8,7 +8,7 @@
  *@num: number to convert
  *Return: 0
  */
-int convertd(int num)
+char *convertd(int num)
 {
 	int i, rem, len = 0, n;
 	char *str[10];
