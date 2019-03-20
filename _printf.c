@@ -69,6 +69,5 @@ int fund(int f, va_list vlist, va_list vlist2, __attribute__((unused)) char *s)
 {
 	printf("%d%d", f, va_arg(vlist, int));
 	s = va_arg(vlist2, char *);
-	
 	return (0);
 }
