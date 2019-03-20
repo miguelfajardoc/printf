@@ -14,7 +14,7 @@ according to a
 as described below.
 
 .SS Return value
-Upon successful return, this function returns the number of characters printed (excluding the null byte used to end output to strings).
+when it is success return the number of characters
 If an output error is encountered, a negative value is returned.
 
 .SS Format of the format string
