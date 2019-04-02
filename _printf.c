@@ -20,12 +20,10 @@
  */
 int _printf(const char *format, ...)
 {
-	int sizef, num_f, size_args = 0, i = 0;
+	int sizef, num_f, size_args = 0, i = 0, flg = 0, sizet;
 	postipos *position;
 	va_list vlist, vlist2;
-	int flg = 0;
 	char *str_prt, *strret = NULL;
-	int sizet;
 
 	if (format == NULL)
 		return (-1);
@@ -44,7 +42,9 @@ int _printf(const char *format, ...)
 	look(format, position);
 	for (i = 0; i < num_f; i++)
 	{
-		size_args +=  position[i].f(flg, vlist, vlist2, strret);
+		size_args +=  position[i].f(flg, vlist, vlist2, &strret);
+		if (position[i].tip == 'd' || position[i].tip == 'i')
+			free(strret);
 	}
 	sizet = sizef + size_args - (2 * num_f);
 	str_prt = malloc(sizeof(char) * sizet);
@@ -55,31 +55,7 @@ int _printf(const char *format, ...)
 	}
 	paste(str_prt, position, format, num_f, vlist, vlist2);
 	put_string(str_prt, sizet);
-	free(position);
-	free(str_prt);
+	free(position), free(str_prt);
 	va_end(vlist);
 	return (sizet);
-}
-/**
- * fund - the int
- * @f: the format to print
- * @vlist: the list
- * @vlist2: the copy of the list
- * @s: the string
- * Return: the length
- */
-int fund(int f, va_list vlist, va_list vlist2, char *s)
-{
-	int i = 0;
-
-	if (f == 0)
-	{
-		s = print_d(f, vlist, vlist2, s);
-		i = _strlen(s);
-		return (i);
-	}
-	else
-	{
-		return (i);
-	}
 }
