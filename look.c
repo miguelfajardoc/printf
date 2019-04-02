@@ -21,14 +21,13 @@ int look(const char *format, postipos *position)
 		{'c', func},
 		{'s', funs},
 		{'d', fund},
-		{'i', fund},
 	};
 
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
-			for (j = 0; j < 4; j++)
+			for (j = 0; j < 3; j++)
 			{
 				if (format[i + 1] == tf[j].tipo)
 				{
