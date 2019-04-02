@@ -16,37 +16,24 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 	   va_list vlist, va_list vlist2)
 {
 	int s = 0, i = 0, j = 0, flg = 1;
-	char charr[2];
 	char *strret;
 	int length;
 
 	while (*(format + i))
 	{
-		printf("j:%d\n", j);
 		while (j < numf)
 		{
 			if (i == position[j].pos)
 			{
-				if (position[j].tip == 'c')
-				{
-					position[j].f(flg, vlist, vlist2, charr);
-					str_ptr[s] = charr[0];
-					j++;
-					i++;
-				}
-				else
-				{
-					if (position[j].tip == 's')
-						strret = funss(strret, vlist2);
-					else
-						strret = print_d(flg, vlist,
-								 vlist2, strret);
-					_strcpy((str_ptr + s), strret);
-					length = _strlen(strret);
-					s = s + length - 1;
-					j++;
-					i++;
-				}
+				length = position[j].f(flg, vlist, vlist2
+						       , &strret);
+				_strcpy((str_ptr + s), strret);
+				if (position[i].tip == 'd' ||
+				    position[i].tip == 'i')
+					free(strret);
+				s = s + length - 1;
+				j++;
+				i++;
 			}
 			else
 				str_ptr[s] = format[i];
