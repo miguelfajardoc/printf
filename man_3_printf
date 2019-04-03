@@ -5,7 +5,7 @@
 .B _printf
 - formatted output conversion.
 .SH SYNOPSIS
-.B #include "our file"
+.B #include "<stdlib.h>"
 .sp
 .BI "int _printf(const char *" format", ...);"
 .ad
@@ -16,7 +16,7 @@ according to a
 .I format
 as described below.
 
-.SS Return value
+.SS The return value
 Upon successful return, this function returns the number of characters printed (excluding the null byte used to end output to strings).
 If an output error is encountered, a negative value is returned.
 
@@ -49,39 +49,7 @@ By default, the arguments are used in the order
 given, where each \(aq*\(aq and each conversion specifier asks for the next
 argument (and it is an error if insufficiently many arguments are given).
 
-
-.SS The flag characters
-.SS The field width
-.SS The precision
-.SS The length modifier
-.SS The conversion specifier
-
-.SH EXAMPLE
-To print
-.I Pi
-to five decimal places:
-.in +4n
-.nf
-
-#include <math.h>
-#include <stdio.h>
-printf("pi = %.5f\en", 4 * atan(1.0));
-.fi
-.in
-.PP
-To print a date and time in the form "Sunday, July 3, 10:02",
-where
-.I weekday
-and
-.I month
-are pointers to strings:
-.in +4n
-.nf
-
-#include <stdio.h>
-printf( "%s, %s %d, %.2d:%.2d\en",
-        weekday, month, day, hour, min);
-
+printf("%2$*1$d", width, num);
 
 .SH SEE ALSO
 .I printf(3)
