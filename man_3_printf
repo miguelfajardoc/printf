@@ -50,39 +50,6 @@ given, where each \(aq*\(aq and each conversion specifier asks for the next
 argument (and it is an error if insufficiently many arguments are given).
 
 
-.SS The flag characters
-.SS The field width
-.SS The precision
-.SS The length modifier
-.SS The conversion specifier
-
-.SH EXAMPLE
-To print
-.I Pi
-to five decimal places:
-.in +4n
-.nf
-
-#include <math.h>
-#include <stdio.h>
-printf("pi = %.5f\en", 4 * atan(1.0));
-.fi
-.in
-.PP
-To print a date and time in the form "Sunday, July 3, 10:02",
-where
-.I weekday
-and
-.I month
-are pointers to strings:
-.in +4n
-.nf
-
-#include <stdio.h>
-printf( "%s, %s %d, %.2d:%.2d\en",
-        weekday, month, day, hour, min);
-
-
 .SH SEE ALSO
 .I printf(3)
 
