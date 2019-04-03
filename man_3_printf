@@ -49,6 +49,7 @@ By default, the arguments are used in the order
 given, where each \(aq*\(aq and each conversion specifier asks for the next
 argument (and it is an error if insufficiently many arguments are given).
 
+printf("%2$*1$d", width, num);
 
 .SH SEE ALSO
 .I printf(3)
