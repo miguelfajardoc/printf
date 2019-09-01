@@ -40,10 +40,9 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 				if (format[i] == '%' && format[i + 1] == '%')
 					i++;
 				else
-				{	str_ptr[s] = format[i];
-					i++, s++;
-				}
+					str_ptr[s] = format[i];
 			}
+			i++, s++;
 		}
 		if (format[i] == '%' && format[i + 1] == '%')
 			i++;
