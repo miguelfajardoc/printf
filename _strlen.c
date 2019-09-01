@@ -15,7 +15,7 @@ int _strlen(const char *s)
 	while (*(s + a) != '\0')
 	{
 		if (s[a] == '%' && s[a + 1] == '%')
-			n++;
+		 	n++;
 		a++;
 	}
 	return (a - n);
