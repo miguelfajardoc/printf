@@ -36,11 +36,22 @@ void paste(char *str_ptr, postipos *position, const char *format, int numf,
 				i++;
 			}
 			else
-				str_ptr[s] = format[i];
+			{
+				if (format[i] == '%' && format[i + 1] == '%')
+					i++;
+				else
+				{	str_ptr[s] = format[i];
+					i++, s++;
+				}
+			}
+		}
+		if (format[i] == '%' && format[i + 1] == '%')
+			i++;
+		else
+		{
+			str_ptr[s] = format[i];
 			i++, s++;
 		}
-		str_ptr[s] = format[i];
-		i++, s++;
 	}
 	str_ptr[s] = '\0';
 }
