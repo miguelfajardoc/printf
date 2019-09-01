@@ -9,11 +9,14 @@
 int _strlen(const char *s)
 {
 	int a;
+	int n = 0;
 
 	a = 0;
 	while (*(s + a) != '\0')
 	{
+		if (s[a] == '%' && s[a + 1] == '%')
+			n++;
 		a++;
 	}
-	return (a);
+	return (a - n);
 }
